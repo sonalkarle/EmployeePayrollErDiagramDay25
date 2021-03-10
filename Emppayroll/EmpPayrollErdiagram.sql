@@ -100,3 +100,34 @@ insert into Departmenttable select ID,Department from Emppayroll;
 alter table Emppayroll drop column Department;
 
 select * from Departmenttable;
+
+--UC12:Ability to perform previous function
+select * from Emppayroll;
+select BasicPay from Payrollofemployee where ID = (select ID from Emppayroll where Name = 'Terissa')
+select * from Emppayroll where StartDate	between '2018-01-01' and GETDATE();
+
+select avg(BasicPay) as average_BasicPay from Payrollofemployee
+select Gender, sum(BasicPay) as total_BasicPay from Payrollofemployee, Emppayroll where Payrollofemployee.ID = Emppayroll.ID group by Gender
+select Gender, count(BasicPay) as salary_BasicPay from Payrollofemployee, Emppayroll where Payrollofemployee.ID = Emppayroll.ID group by Gender
+select Gender, max(BasicPay) as max_BasicPay from Payrollofemployee, Emppayroll where Payrollofemployee.ID = Emppayroll.ID group by Gender;
+select Gender, min(BasicPay) as min_BasicPay from Payrollofemployee, Emppayroll where Payrollofemployee.ID = Emppayroll.ID group by Gender;
+
+
+
+select BasicPay from Payrollofemployee where ID = (select ID from Emppayroll where Name = 'Terissa')
+
+select * from Emppayroll, Departmenttable  where Emppayroll.ID = Departmenttable.ID and StartDate between '2018-01-01' and GETDATE();
+
+select Emppayroll.ID,Name,StartDate,Gender,PhoneNumber,Address,
+	   Department,BasicPay,Deduction,TaxablePay,IncomeTax
+	   NetPay,CompanyName
+ from Emppayroll, Departmenttable , Payrollofemployee , Company  
+where Emppayroll.ID = Departmenttable.ID and
+      Emppayroll.ID = Payrollofemployee.ID and
+	  Emppayroll.ID = Company.ID; 
+
+use EmpPayroll;
+select * from Emppayroll
+
+Update Emppayroll set PhoneNumber = 54321 where Name = 'dhoni'
+
