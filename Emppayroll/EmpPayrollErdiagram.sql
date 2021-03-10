@@ -25,3 +25,10 @@ select * from Emppayroll;
 --UC5: Find particular person salary and particular date range 
 select salary from Emppayroll where Name = 'dhoni';
 select * from Emppayroll where StartDate	between '2020-01-01' and GETDATE();
+
+--UC6:Ability to add geneder row in table
+alter table Emppayroll add Gender char(1)
+update Emppayroll set Gender = 'M'; 
+insert into Emppayroll(Name, Salary, StartDate,Gender) values
+('shravni', 15000, '2019-01-01','F'),
+('seema', 30000, '2020-01-01','F');
