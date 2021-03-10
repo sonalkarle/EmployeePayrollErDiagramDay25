@@ -12,3 +12,9 @@ Salary		int,
 StartDate	Date,
 primary key(ID)
 )
+
+--UC3:Ability to use insert option
+insert into Emppayroll(Name, Salary, StartDate) values
+('dhoni', 20000, '2018-01-01'),
+('kohli', 45000, '2019-01-01'),
+('rahane', 22000, '2020-01-01');
