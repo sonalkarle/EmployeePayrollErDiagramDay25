@@ -44,3 +44,6 @@ select count(Salary) as salary_count from Emppayroll
 select Gender, sum(Salary) as total_salary from Emppayroll group by Gender
 select Gender, count(Salary) as salary_count from Emppayroll group by Gender
 select Gender, max(Salary) as max_salary from Emppayroll group by Gender;
+
+--UC8:Add address and department extend the row
+alter table Emppayroll add PhoneNumber bigint, Address varchar(150) default('Mumbai'), Department varchar(50);
