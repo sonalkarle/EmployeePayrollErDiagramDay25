@@ -52,3 +52,9 @@ alter table employee_Payroll add PhoneNumber bigint, Address varchar(150) defaul
 --UC9:Ability to extend basic pay,deduction,tax pay,Income tax,net pay
 alter table Emppayroll add Deduction int, TaxablePay int, IncomeTax int, NetPay int;
 EXEC sp_RENAME 'Emppayroll.Salary', 'BasicPay', 'column'
+
+--UC10:Add terissa for marketing and sales
+insert into Emppayroll(Name, BasicPay, StartDate,Gender) values
+('Terissa', 15000, '2019-01-01','F');
+update Emppayroll set Department = 'Sales'  where Name  = 'Terissa';
+insert into Emppayroll(Name, Department) values('Terissa', 'Marketing');
