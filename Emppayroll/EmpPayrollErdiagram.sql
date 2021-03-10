@@ -58,3 +58,45 @@ insert into Emppayroll(Name, BasicPay, StartDate,Gender) values
 ('Terissa', 15000, '2019-01-01','F');
 update Emppayroll set Department = 'Sales'  where Name  = 'Terissa';
 insert into Emppayroll(Name, Department) values('Terissa', 'Marketing');
+
+--UC11:Create ER diagram 
+
+create Table Company
+(
+ID	int,
+CompanyName	varchar(255),
+constraint Company_foreign_Key_EmpID foreign key(ID) references Emppayroll(ID) on delete cascade
+)
+insert into Company select ID, Name from Emppayroll;
+select * from Company;
+
+
+create Table Payrollofemployee
+(
+ID		int,
+BasicPay	Money,
+Deduction	Money,
+TaxablePay	Money,
+IncomeTax	Money,
+NetPay		Money
+constraint Payrollofemployee_foreign_Key_ID foreign key(ID) references Emppayroll(ID) on delete cascade
+)
+insert into Payrollofemployee select ID, BasicPay, Deduction, TaxablePay, IncomeTax, NetPay from Emppayroll;
+
+select * from Emppayroll;
+select * from Payrollofemployee;
+
+alter table Emppayroll drop column BasicPay, Deduction, TaxablePay, IncomeTax, NetPay;
+
+create table Departmenttable
+(
+Id int,
+Department varchar (20)
+constraint Departmenttable_foreign_Key_ID foreign key(ID) references Emppayroll(ID) on delete cascade
+
+);
+
+insert into Departmenttable select ID,Department from Emppayroll;
+alter table Emppayroll drop column Department;
+
+select * from Departmenttable;
