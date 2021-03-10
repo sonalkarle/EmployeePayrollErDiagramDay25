@@ -21,3 +21,7 @@ insert into Emppayroll(Name, Salary, StartDate) values
 
 --UC4:Ability to retrive data
 select * from Emppayroll;
+
+--UC5: Find particular person salary and particular date range 
+select salary from Emppayroll where Name = 'dhoni';
+select * from Emppayroll where StartDate	between '2020-01-01' and GETDATE();
