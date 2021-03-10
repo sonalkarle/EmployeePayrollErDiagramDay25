@@ -32,3 +32,15 @@ update Emppayroll set Gender = 'M';
 insert into Emppayroll(Name, Salary, StartDate,Gender) values
 ('shravni', 15000, '2019-01-01','F'),
 ('seema', 30000, '2020-01-01','F');
+
+
+--UC7:Ability to find avg,min,max and count
+select sum(Salary) as total_salary from Emppayroll
+select avg(Salary) as average_salary from Emppayroll
+select min(Salary) as min_salary from Emppayroll
+select max(Salary) as max_salary from Emppayroll
+select count(Salary) as salary_count from Emppayroll
+
+select Gender, sum(Salary) as total_salary from Emppayroll group by Gender
+select Gender, count(Salary) as salary_count from Emppayroll group by Gender
+select Gender, max(Salary) as max_salary from Emppayroll group by Gender;
